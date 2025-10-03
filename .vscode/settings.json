@@ -1,0 +1,10 @@
+{
+    "luau-lsp.fflags.enableNewSolver": true,
+    "luau-lsp.sourcemap.enabled": true,
+    "luau-lsp.platform.type": "roblox",
+    "luau-lsp.fflags.override": {
+        "FFlagDebugLuauStringSingletonBasedOnQuotes": "true",
+    },
+    "stylua.searchBinaryInPATH": false,
+    "stylua.targetReleaseVersion": "latest"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@rbxts/lexi",
+  "version": "0.1.0",
+  "description": "Localisation for Vide, simplified.",
+  "main": "dist/lib/init.luau",
+  "types": "dist/lib/index.d.ts",
+  "scripts": {
+    "prepare": "pesde run ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daimond113/lexi.git"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "daimond113 <contact@daimond113.com> (https://www.daimond113.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daimond113/lexi/issues"
+  },
+  "homepage": "https://github.com/daimond113/lexi#readme",
+  "peerDependencies": {
+    "@rbxts/vide": "^0.5.7"
+  },
+  "devDependencies": {
+    "@rbxts/compiler-types": "3.0.0-types.0",
+    "@rbxts/types": "^1.0.880"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "tree": {
+        "$className": "Folder",
+        "lib": {
+            "$path": "pkgs/lib"
+        }
+    }
+}

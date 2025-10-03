@@ -1,0 +1,26 @@
+name = "daimond113/lexi"
+version = "0.1.0"
+description = "Localisation for Vide, simplified."
+authors = ["daimond113 <contact@daimond113.com> (https://www.daimond113.com)"]
+repository = "https://github.com/daimond113/lexi"
+license = "MIT"
+
+includes = ["src/**/*", "README.md"]
+
+[target]
+environment = "roblox"
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[wally_indices]
+default = "https://github.com/UpliftGames/wally-index"
+
+[scripts]
+ts = "./scripts/ts.luau"
+
+[peer_dependencies]
+vide = { wally = "centau/vide", version = "^0.3.1" }
+
+[engines]
+lune = "^0.8.9"

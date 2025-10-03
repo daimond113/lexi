@@ -1,0 +1,6 @@
+*_packages
+sourcemap.json
+.pesde
+node_modules
+dist
+.env

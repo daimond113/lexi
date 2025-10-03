@@ -1,0 +1,39 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@rbxts/vide':
+        specifier: ^0.5.7
+        version: 0.5.7
+    devDependencies:
+      '@rbxts/compiler-types':
+        specifier: 3.0.0-types.0
+        version: 3.0.0-types.0
+      '@rbxts/types':
+        specifier: ^1.0.880
+        version: 1.0.880
+
+packages:
+
+  '@rbxts/compiler-types@3.0.0-types.0':
+    resolution: {integrity: sha512-VGOHJPoL7+56NTatMGqQj3K7xWuzEV+aP4QD5vZiHu+bcff3kiTmtoadaF6NkJrmwfFAvbsd4Dg764ZjWNceag==}
+
+  '@rbxts/types@1.0.880':
+    resolution: {integrity: sha512-gC0aCsLXy72039mKy1syxBt3CdJT0GAYIf2/Bje7ypfWcgwLDPKxOyC51MWmmHmnwgYdIpPCgXIQx3p8ECSN5A==}
+
+  '@rbxts/vide@0.5.7':
+    resolution: {integrity: sha512-Q9R7ybzuHK1phtLicBHgAjQnlJ/dMsXDs2k296PIMLgLqK9aX/f1skOP7F1K/vo7IrSE0jCG3B3XTOtQL1Sb0Q==}
+
+snapshots:
+
+  '@rbxts/compiler-types@3.0.0-types.0': {}
+
+  '@rbxts/types@1.0.880': {}
+
+  '@rbxts/vide@0.5.7': {}
