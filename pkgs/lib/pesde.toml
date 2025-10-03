@@ -5,10 +5,12 @@ authors = ["daimond113 <contact@daimond113.com> (https://www.daimond113.com)"]
 repository = "https://github.com/daimond113/lexi"
 license = "MIT"
 
-includes = ["src/**/*", "README.md"]
+includes = ["src/**/*", "!src/index.d.ts", "README.md"]
 
 [target]
 environment = "roblox"
+lib = "src/init.luau"
+build_files = ["src"]
 
 [indices]
 default = "https://github.com/pesde-pkg/index"
