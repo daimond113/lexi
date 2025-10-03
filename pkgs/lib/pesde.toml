@@ -25,4 +25,4 @@ ts = "./scripts/ts.luau"
 vide = { wally = "centau/vide", version = "^0.3.1" }
 
 [engines]
-lune = "^0.8.9"
+lune = "^0.10.2"

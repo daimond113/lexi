@@ -1,7 +1,14 @@
 name: Build Release Executables
 
 on:
-    release
+  release:
+    types: [published]
+
+permissions:
+    contents: write
+
+env:
+  GH_TOKEN: ${{ github.token }}
 
 jobs:
     build:
@@ -24,17 +31,25 @@ jobs:
                 pesde x pesde/darklua -- process pkgs/bin/src bundle
             - name: Lune Build
               run:
-                lune build bundle/init.luau -o releases/lexi-windows-x86_64 -t windows-x86_64
-                lune build bundle/init.luau -o releases/lexi-windows-aarch64 -t windows-aarch64
-                lune build bundle/init.luau -o releases/lexi-macos-x86_64 -t windows-x86_64
-                lune build bundle/init.luau -o releases/lexi-macos-aarch64 -t windows-aarch64
-                lune build bundle/init.luau -o releases/lexi-linux-x86_64 -t linux-x86_64
-                lune build bundle/init.luau -o releases/lexi-linux-aarch64 -t linux-aarch64
+                lune build bundle/init.luau -o ./lexi-x86_64-windows.exe -t windows-x86_64;
+                lune build bundle/init.luau -o ./lexi-aarch64-windows.exe -t windows-aarch64;
+                lune build bundle/init.luau -o ./lexi-x86_64-macos.exe -t windows-x86_64;
+                lune build bundle/init.luau -o ./lexi-aarch64-macos.exe -t windows-aarch64;
+                lune build bundle/init.luau -o ./lexi-x86_64-linux -t linux-x86_64;
+                lune build bundle/init.luau -o ./lexi-aarch64-linux -t linux-aarch64
+            - name: Compress
+              run:
+                tar -czf ./lexi-x86_64-windows.tar.gz ./lexi-x86_64-windows.exe;
+                tar -czf ./lexi-aarch64-windows.tar.gz ./lexi-aarch64-windows.exe;
+                tar -czf ./lexi-x86_64-macos.tar.gz ./lexi-x86_64-macos.exe;
+                tar -czf ./lexi-aarch64-macos.tar.gz ./lexi-aarch64-macos.exe;
+                tar -czf ./lexi-x86_64-linux.tar.gz ./lexi-x86_64-linux;
+                tar -czf ./lexi-aarch64-linux.tar.gz ./lexi-aarch64-linux
             - name: Release files
               run:
-                gh release upload ${{github.event.release.tag_name}} releases/lexi-windows-x86_64
-                gh release upload ${{github.event.release.tag_name}} releases/lexi-windows-aarch64
-                gh release upload ${{github.event.release.tag_name}} releases/lexi-macos-x86_64
-                gh release upload ${{github.event.release.tag_name}} releases/lexi-macos-aarch64
-                gh release upload ${{github.event.release.tag_name}} releases/lexi-linux-x86_64
-                gh release upload ${{github.event.release.tag_name}} releases/lexi-linux-aarch64
+                gh release upload ${{github.event.release.tag_name}} ./lexi-x86_64-windows.tar.gz;
+                gh release upload ${{github.event.release.tag_name}} ./lexi-aarch64-windows.tar.gz;
+                gh release upload ${{github.event.release.tag_name}} ./lexi-x86_64-macos.tar.gz;
+                gh release upload ${{github.event.release.tag_name}} ./lexi-aarch64-macos.tar.gz;
+                gh release upload ${{github.event.release.tag_name}} ./lexi-x86_64-linux.tar.gz;
+                gh release upload ${{github.event.release.tag_name}} ./lexi-aarch64-linux.tar.gz
