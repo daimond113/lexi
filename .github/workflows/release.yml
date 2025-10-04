@@ -26,7 +26,7 @@ jobs:
                 pesde install
             - name: Bundle
               run:
-                darklua -- process pkgs/bin/src bundle
+                darklua process pkgs/bin/src bundle
             - name: Build and release
               run:
                 targets=("windows-x86_64" "linux-x86_64" "macos-x86_64" "linux-aarch64" "windows-aarch64" "macos-aarch64" )
