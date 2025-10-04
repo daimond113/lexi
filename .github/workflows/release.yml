@@ -29,20 +29,13 @@ jobs:
             - name: Bundle
               run:
                 pesde x pesde/darklua -- process pkgs/bin/src bundle
-            - name: Lune Build
-              run:
-                targets=("windows-x86_64" "linux-x86_64" "macos-x86_64" "linux-aarch64" "windows-aarch64" "macos-aarch64" );
-
-                for target in "${targets[@]}"
-                do
-                  lune build bundle/init.luau -o "lexi-${target}" -t "$target"
-                done
-            - name: Compress and upload
+            - name: Build and release
               run:
                 targets=("windows-x86_64" "linux-x86_64" "macos-x86_64" "linux-aarch64" "windows-aarch64" "macos-aarch64" )
 
                 for target in "${targets[@]}"
                 do
+                  lune build bundle/init.luau -o "lexi-${target}" -t "$target"
                   tar -czf "./lexi-${target}.tar.gz" "./lexi-${target}";
                   gh release upload ${{github.event.release.tag_name}} "./lexi-${target}.tar.gz"
                 done
