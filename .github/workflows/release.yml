@@ -1,0 +1,39 @@
+name: Build Release Executables
+
+on:
+  release:
+    types: [published]
+
+permissions:
+    contents: write
+
+env:
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v5
+            - name: Setup pesde
+              uses: axiom-co/setup-pesde@b690699ace34169731b6b2a1c93b2008472038a7
+              with:
+                token: ${{ secrets.PESDE_TOKEN }}
+                cache: true
+            - name: Install pesde packages
+              run:
+                pesde install
+            - name: Bundle
+              run:
+                darklua process pkgs/bin/src bundle
+            - name: Build and release
+              run:
+                targets=("windows-x86_64" "linux-x86_64" "macos-x86_64" "linux-aarch64" "windows-aarch64" "macos-aarch64" )
+
+                for target in "${targets[@]}"
+                do
+                  lune build bundle/init.luau -o "lexi-${target}" -t "$target";
+                  tar -czf "./lexi-${target}.tar.gz" "./lexi-${target}";
+                  gh release upload ${{github.event.release.tag_name}} "./lexi-${target}.tar.gz"
+                done
