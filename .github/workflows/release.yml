@@ -16,14 +16,12 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v5
-            - name: Setup Rokit
-              uses: CompeyDev/setup-rokit@v0.1.2
             - name: Setup pesde
               uses: axiom-co/setup-pesde@b690699ace34169731b6b2a1c93b2008472038a7
               with:
                 token: ${{ secrets.PESDE_TOKEN }}
                 cache: true
-            - name: Install Pesde Packages
+            - name: Install pesde packages
               run:
                 pesde install
             - name: Bundle
