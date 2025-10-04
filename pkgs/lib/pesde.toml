@@ -24,5 +24,5 @@ ts = "./scripts/ts.luau"
 [peer_dependencies]
 vide = { wally = "centau/vide", version = "^0.3.1" }
 
-[engines]
-lune = "^0.10.2"
+# [engines]
+# lune = "^0.10.2"

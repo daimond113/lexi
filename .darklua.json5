@@ -11,6 +11,8 @@
   },
 
   rules: [
+    "remove_comments",
+    "remove_spaces",
     "remove_nil_declaration",
     "compute_expression",
     "remove_unused_if_branch",
