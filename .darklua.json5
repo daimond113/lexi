@@ -1,39 +1,16 @@
 {
-  // Output code in different ways depending on the given generator
-  generator: "retain_lines", // default value
+  generator: "retain_lines",
 
   bundle: {
-    // Identifier used by darklua to store the bundled modules
     modules_identifier: "__DARKLUA_BUNDLE_MODULES",
-
-    // To avoid bundling certain paths, insert patterns into the list to exclude
-    // them (see https://github.com/olson-sean-k/wax/blob/master/README.md#patterns
-    // for details about the syntax)
-	excludes: [ "@lune/**" ],
-
-    // Configure how requires are interpreted
+  	excludes: [ "@lune/**" ],
     require_mode: {
-      // Currently, the only supported require mode is `path`
       name: "luau",
-
-      // Enable or disable finding `.luaurc` files to load source aliases
-      use_luau_configuration: false, // default value
+      use_luau_configuration: false,
     },
   },
 
-  // Define the rules that will transform the Lua code.
-  // If you do not provide this field, the default list of rules is
-  // going to be executed.
   rules: [
-    "remove_comments",
-    "remove_spaces",
-    // For rules with parameters, use the object notation to specify
-    // the values to override
-    {
-      rule: "inject_global_value",
-      identifier: "DEBUG",
-      value: false,
-    },
     "remove_nil_declaration",
     "compute_expression",
     "remove_unused_if_branch",
