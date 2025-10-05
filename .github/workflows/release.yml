@@ -33,6 +33,6 @@ jobs:
           for target in "${targets[@]}"
           do
             lune build bundle/init.luau -o "lexi-${target}" -t "$target"
-            tar -czf "./lexi-${target}.tar.gz" "./lexi-${target}"
-            gh release upload ${{github.event.release.tag_name}} "./lexi-${target}.tar.gz"
+            tar -czf "./lexi-${target}.tar.gz" "./lexi-${target}"*
+            gh release upload ${{ github.event.release.tag_name }} "./lexi-${target}.tar.gz"
           done
